@@ -1,0 +1,102 @@
+---
+import Link from "@components/Link.astro";
+import { twitter, author, defaultMeta, navigation } from "@data/constants";
+import "@fontsource-variable/inter";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: {
+    src: string;
+    alt: string;
+  };
+  pubDate?: Date;
+  wide?: boolean;
+}
+
+const {
+  title = defaultMeta.title,
+  description = defaultMeta.description,
+  ogImage = defaultMeta.ogImage,
+  pubDate,
+  wide = false,
+} = Astro.props;
+
+const ogImageURL = new URL(ogImage.src, Astro.site).href;
+const canonicalURL = new URL(Astro.url).href;
+---
+
+<!doctype html>
+<html lang="en-US" class="dark:[color-scheme:dark]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content={author} />
+    <meta property="og:image:alt" content={ogImage.alt} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta name="twitter:site" content={twitter} />
+    <meta name="twitter:creator" content={twitter} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageURL} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="follow, index" />
+    <meta name="author" content={author} />
+    {
+      pubDate && (
+        <meta
+          property="article:published_time"
+          content={pubDate.toISOString()}
+        />
+      )
+    }
+  </head>
+  <body
+    class="dark:bg-zinc-950 bg-zinc-50 antialiased selection:bg-green-300 selection:text-zinc-900 dark:selection:bg-green-800 dark:selection:text-white pt-10 pb-20 2xl:text-lg"
+  >
+    <a
+      href="#main-content"
+      class="absolute opacity-0 focus:opacity-100 border-transparent border-y border-r dark:focus:border-zinc-900 text-xs lg:text-sm px-4 py-1.5 lg:py-2 top-1 lg:top-[41px] transition-transform duration-300 rounded-r-full bg-green-400 dark:bg-zinc-800 font-medium text-zinc-800 dark:text-zinc-200 focus:outline-none -translate-x-full focus:translate-x-0"
+      >Skip to main content</a
+    >
+    <nav
+      class="mb-16 mx-auto flex overflow-x-auto px-6 lg:px-2 sm:overflow-x-visible"
+      class:list={{
+        "max-w-4xl": wide,
+        "max-w-3xl": !wide,
+      }}
+    >
+      <ul class="flex justify-evenly space-x-6">
+        {
+          navigation.map((item) => (
+            <li>
+              <Link {...item} />
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <main
+      class="px-6 lg:px-2 mx-auto dark:text-zinc-400 text-zinc-600"
+      id="main-content"
+      class:list={{
+        "max-w-4xl": wide,
+        "max-w-3xl": !wide,
+      }}
+    >
+      <slot />
+    </main>
+  </body>
+</html>

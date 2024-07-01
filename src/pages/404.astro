@@ -1,0 +1,25 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Picture } from "astro:assets";
+import bailu from "../assets/bailu.png";
+const title = "Not found";
+const description = "Sorry, the page you are looking for does not exist.";
+---
+
+<Layout title={title} description={description}>
+  <div class="flex flex-col items-center gap-4 mt-18">
+    <Picture
+      src={bailu}
+      alt="Chibi Bailu from Honkai Star Rail (ctto)"
+      loading="eager"
+      class="aspect-square"
+      densities={[1.5, 2]}
+      formats={["webp"]}
+      width={360}
+      height={360}
+    />
+    <p class="dark:text-white font-medium text-zinc-900 text-center">
+      Welp, this page doesn't exist.
+    </p>
+  </div>
+</Layout>

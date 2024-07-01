@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  text: string;
+}
+const { text, href, ...props } = Astro.props;
+let isActive: boolean;
+if (!href) {
+  isActive = false;
+} else if (href === "/") {
+  isActive = href === Astro.url.pathname;
+} else {
+  isActive = Astro.url.pathname.includes(
+    typeof href === "string" ? href : href.href,
+  );
+}
+---
+
+<a
+  class:list={[
+    "font-semibold text-base block py-2.5 transition-colors",
+    { "!dark:hover:text-green-300 !hover:text-green-700 dark:text-green-400 text-green-600": isActive },
+    { "dark:text-zinc-300 text-zinc-600 hover:text-zinc-700/70 dark:hover:text-white": !isActive },
+  ]}
+  aria-current={isActive ? "page" : undefined}
+  href={href} 
+  {...props}
+  aria-label={`Go to ${text} page`}
+>
+  {text}
+</a>

@@ -1,0 +1,7 @@
+User-agent: Googlebot-Image
+Disallow: /_astro/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://astrozinc.exylons.com/sitemap-index.xml

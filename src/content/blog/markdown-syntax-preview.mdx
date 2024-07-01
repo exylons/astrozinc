@@ -1,0 +1,202 @@
+---
+title: Markdown Syntax Preview
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+pubDate: 2024-06-10
+updatedDate: 2024-06-27
+hero: "~/assets/heros/test.png"
+heroAlt: "Stelle and Clara together on Honkai Star Rail"
+---
+
+{/*  import AudioPlayer from '@components/MDX/AudioPlayer.astro'
+import Callout from '@components/MDX/Callout.astro'
+import SpotifyEmbed from '@components/MDX/SpotifyEmbed.astro' */}
+
+# Table of Contents[^1]
+
+[^1]:  From @nekochan0122
+
+# Markdown Syntax
+
+## Paragraphs
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit 🤣, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id donec ultrices tincidunt arcu non sodales neque sodales. Adipiscing diam donec adipiscing tristique risus nec feugiat in.
+
+## Line Break
+
+> This is an auto line break
+
+Lorem ipsum dolor sit amet,
+consectetur adipiscing elit 🤣,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Id donec ultrices tincidunt arcu non sodales neque sodales.
+Adipiscing diam donec adipiscing tristique risus nec feugiat in.
+
+## Emphasis
+
+### Bold
+
+I Love **Astro!**
+
+### Italic
+
+I am a _Web Developer_.
+
+### Bold and Italic
+
+Thou **_SHALL_** not touch.
+
+## Blockquotes
+
+> Blockquotes can also be nested...
+>
+> > ...by using additional greater-than signs right next to each other...
+> >
+> > > ...or with spaces between arrows.
+
+## Lists
+
+### Unordered
+
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    - Ac tristique libero volutpat at
+    - Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
+- Very easy!
+
+### Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+Start numbering with offset: (doesn't work sadly)
+
+57. foo
+1. bar
+
+## Code
+
+> Syntax highlighting by [`Rehype Pretty Code`](https://rehype-pretty-code.netlify.app/ "Rehype Pretty Code's documentation")
+
+### Inline Code
+
+This is an array `[1, 2, 3]` of numbers 1 through 3.
+
+### Code Block
+
+```
+Sample text here...
+```
+
+### Code Block with Title
+
+```bash title="Terminal"
+pnpm build
+```
+
+### Code Block with Title and Highlighting
+
+```jsx title="Counter.tsx" showLineNumbers {4}
+import { createSignal } from 'solid-js'
+
+export default function Counter() {
+  const [count, setCount] = createSignal(0)
+
+  const add = () => setCount((i) => i + 1)
+
+  return (
+    <div class='flex gap-x-4'>
+      <button type='button' onClick={add}>
+        the count is {count()}
+      </button>
+    </div>
+  )
+}
+```
+
+## Horizontal Rules
+
+---
+
+## Link
+
+[YouTube](https://youtube.com)
+
+[Google]
+
+[google]: https://google.com
+
+### Adding Titles
+
+[YouTube](https://youtube.com 'Go to YouTube')
+
+## Image
+
+Image compressed by `sharp`
+
+Local image
+
+![Stelle and Clara together on Honkai Star Rail](../../assets/heros/test.png)
+
+Remote image
+
+![March 7th from Honkai Star Rail](https://www.pockettactics.com/wp-content/sites/pockettactics/2024/01/honkai-star-rail-march-7th.jpg)
+
+## Escaping Characters
+
+\* Without the backslash, this would be a bullet in an unordered list.
+
+### Footnote
+
+A note[^2]
+
+[^2]: Footnote (of course, at the end).
+
+### Strikethrough
+
+~one~ or ~~two~~ tildes.
+
+### Table
+
+| First Header   | Second Header  |
+| -------------- | -------------- |
+| Content Cell 1 | Content Cell 1 |
+| Content Cell 2 | Content Cell 2 |
+| Content Cell 3 | Content Cell 3 |
+| Content Cell 4 | Content Cell 4 |
+
+### Tasklist
+
+- [ ] to do
+- [x] done
+---
+
+{/* # Audio Player
+
+Might be loud on your device. Please adjust your device volume before playing.
+
+<AudioPlayer audioFile="../../../audios/sample.mp3" title="Sample Audio Title" description="Sample Audio Description" />
+
+# Callouts[^3]
+
+[^3]: UI from @nekochan0122
+
+<Callout title="Lance Ross">Black and White.</Callout>
+
+<Callout title="Sample" type="info">Imagine this is a payment portal app.</Callout>
+
+<Callout title="Payment Success!" type="success">Successfully paid 500$ to @exylons!</Callout>
+
+<Callout title="Payment Failed."type="warning">There is a problem with your payment method. Please try again.</Callout>
+
+<Callout title="NOTICE" type="error">Your account has been terminated due to money laundering.</Callout>
+
+# Spotify Embed
+
+I do not own these songs! I just picked these song to show the Spotify embed code (from Spotify AB) as a component on my website. Songs are from Connor Price (he's a great artist!).
+
+<SpotifyEmbed size="small" link="https://open.spotify.com/track/5PspcXQtSiTDRPa8V5PHYf"/>
+<SpotifyEmbed size="large" link="https://open.spotify.com/track/5PspcXQtSiTDRPa8V5PHYf"/>
+<SpotifyEmbed size="large" link="https://open.spotify.com/artist/5zixe6AbgXPqt4c1uSl94L"/> */}
