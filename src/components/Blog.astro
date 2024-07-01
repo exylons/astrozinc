@@ -5,8 +5,6 @@ type Props = CollectionEntry<"blog"> & {
   minimal?: true;
 };
 
-import asdasd from "../assets/heros/test.png"
-
 const { data, slug, minimal = false } = Astro.props;
 
 const fullDate = data.pubDate.toLocaleDateString("en", {
@@ -17,28 +15,40 @@ const fullDate = data.pubDate.toLocaleDateString("en", {
 ---
 
 <li
-  class="relative group flex flex-col sm:flex-row gap-0.5 border-b border-spacing-y-2 border-zinc-300 dark:border-zinc-800 pb-6"
+  class=""
   class:list={{
     "sm:gap-2": !minimal,
     "lg:flex-row lg:items-baseline lg:justify-between": minimal,
   }}
 >
-  <Image src={data.hero} alt="awawa" width={640} height={480} class="w-[240px] h-[135px] rounded-md sm:mr-6"/>
-  <div class="flex flex-col">
-    <time
-    datetime={data.pubDate.toISOString()}
-    class="text-sm mb-1 sm:mb-2 mt-3 sm:mt-1"
-    class:list={{
-      "lg:order-2": minimal,
-    }}
-    >{fullDate}
-  </time>
   <a
-    class="font-semibold dark:text-zinc-300 text-zinc-950 group-hover:text-green-500 dark:group-hover:text-green transition-colors"
     href={`/blog/${slug}/`}
+    class="relative group flex flex-col sm:flex-row gap-0.5 border-b border-spacing-y-2 border-zinc-300 dark:border-zinc-800 pb-6"
   >
-    {data.title}
+    <Image
+      src={data.hero}
+      alt="awawa"
+      width={640}
+      height={480}
+      class="w-[240px] h-[135px] rounded-md sm:mr-6 hover:opacity-80 transition"
+    />
+    <div class="flex flex-col">
+      <time
+        datetime={data.pubDate.toISOString()}
+        class="text-sm mb-1 sm:mb-2 mt-3 sm:mt-1"
+        class:list={{
+          "lg:order-2": minimal,
+        }}
+        >{fullDate}
+      </time>
+
+      <p class="mb-1 font-semibold dark:text-zinc-300 text-zinc-950 group-hover:text-zinc-400 dark:group-hover:text-green transition-colors">{data.title}</p>
+
+      {
+        !minimal && (
+          <p class="leading-relaxed max-w-prose">{data.description}</p>
+        )
+      }
+    </div>
   </a>
-  {!minimal && <p class="leading-relaxed max-w-prose">{data.description}</p>}
-  </div>
 </li>

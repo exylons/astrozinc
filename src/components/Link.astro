@@ -20,8 +20,8 @@ if (!href) {
 <a
   class:list={[
     "font-semibold text-base block py-2.5 transition-colors",
-    { "!dark:hover:text-green-300 !hover:text-green-700 dark:text-green-400 text-green-600": isActive },
-    { "dark:text-zinc-300 text-zinc-600 hover:text-zinc-700/70 dark:hover:text-white": !isActive },
+    { "dark:text-zinc-50 text-zinc-950": isActive },
+    { "dark:text-zinc-400 text-zinc-600 hover:text-zinc-800 dark:hover:text-zinc-50": !isActive },
   ]}
   aria-current={isActive ? "page" : undefined}
   href={href} 

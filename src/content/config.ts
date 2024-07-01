@@ -12,20 +12,6 @@ const blogCollection = defineCollection({
     }),
 });
 
-const projectCollection = defineCollection({
-  type: "data",
-  schema: z.object({
-    owner: z.string(),
-    repo: z.string(),
-    url: z.string().url(),
-    description: z.string(),
-    languages: z.array(z.string()),
-    website: z.string().url().optional(),
-  }),
-});
-
 export const collections = {
   blog: blogCollection,
-  oss: projectCollection,
-  "personal-projects": projectCollection,
 };

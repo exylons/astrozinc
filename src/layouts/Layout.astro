@@ -64,7 +64,7 @@ const canonicalURL = new URL(Astro.url).href;
     }
   </head>
   <body
-    class="dark:bg-zinc-950 bg-zinc-50 antialiased selection:bg-green-300 selection:text-zinc-900 dark:selection:bg-green-800 dark:selection:text-white pt-10 pb-20 2xl:text-lg"
+    class="dark:bg-zinc-950 bg-zinc-50 antialiased selection:bg-zinc-700 selection:text-zinc-100 dark:selection:bg-zinc-500 dark:selection:text-white pt-10 2xl:text-lg"
   >
     <a
       href="#main-content"
@@ -98,5 +98,12 @@ const canonicalURL = new URL(Astro.url).href;
     >
       <slot />
     </main>
+    <footer class="mt-12 pb-12">
+      <div class="mx-auto max-w-4xl px-6 lg:px-2 text-center text-xs lg:text-sm dark:text-zinc-400 text-zinc-600">
+        <p>
+          &copy; {new Date().getFullYear()} {author}. All rights reserved.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

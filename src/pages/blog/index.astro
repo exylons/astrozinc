@@ -8,17 +8,20 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const title = "Blog - exylons (Lance Ross)";
+const title = "Blog - AstroZinc";
 const description =
-  "This is where I share my thoughts, ideas, and interesting things to tell. Most of these are web developement stuff, don't worry.";
+  "This is a collection of all the blog posts that I have written. I write about web development, programming, and other things that I find interesting.";
 ---
 
 <Layout title={title} description={description}>
   <Header title="Blog" />
-  <p class="max-w-prose mb-10 font-normal leading-relaxed">
+  <p class="max-w-prose mb-10 font-normal leading-relaxed text-center">
     {description}
   </p>
-  <ul class="grid grid-cols-1 gap-6">
+  <h2 class="mt-12 text-2xl font-semibold dark:text-zinc-100 text-zinc-900">
+    Posts
+  </h2>
+  <ul class="mt-6 grid grid-cols-1 gap-6">
     {posts.map((p) => <Blog {...p} />)}
   </ul>
 </Layout>

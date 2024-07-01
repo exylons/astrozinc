@@ -29,52 +29,17 @@ const posts = (await getCollection("blog")).sort(
       Recent Posts
     </h2>
     <ul class="mt-6 grid grid-cols-1 gap-6">
-      {posts.slice(0, 5).map((post) => <Blog {...post} />)}
+      {posts.slice(0, 3).map((post) => <Blog {...post} />)}
     </ul>
     <a
-      class="inline-block mt-7 dark:hover:text-green hover:text-green-500 transition-colors"
+      class="inline-block mt-7 dark:hover:text-zinc-50 hover:text-zinc-400 transition-colors"
       href="/blog/">View all posts &rarr;</a
     >
   </section>
-  <section>
-    <h2 class="mt-12 text-2xl font-semibold dark:text-zinc-100 text-zinc-950">
-      Connect with me
-    </h2>
-    <p class="mt-3 max-w-prose leading-relaxed">
-      If you wanna hit me a message or follow my works, you can visit my socials
-      down below!
-    </p>
-    <ul class="mt-4 sm:mt-6 grid sm:grid-cols-3 gap-2 sm:gap-1">
-      <li id="copy">
-        <span
-          id="copyText"
-          class="inline-flex gap-2 items-center group cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors"
-          ><Icon name="discord" size={16} />exylons<Icon
-            name="clipboard"
-            class="-ml-1 opacity-0 group-hover:opacity-100 transition-opacity"
-          /></span
-        >
-      </li>
-      {socials.map((s) => <Social {...s} />)}
-    </ul>
-    <Toast
-      icon="clipboard"
-      description="Username copied to clipboard."
-      classlist=""
-    />
+  <section class="text-center mt-12">
+    <div class="sm:mr-5">
+      <Header title="Why should you use this template?" />
+      [placeholder for now]
+    </div>
   </section>
 </Layout>
-
-<script is:inline async>
-  document.getElementById("copy").addEventListener("click", function () {
-    let copyText = "exylons";
-    let toastElement = document.getElementById("toast");
-
-    navigator.clipboard.writeText(copyText).then(() => {
-      toastElement.classList.add("!opacity-100");
-      setTimeout(() => {
-        toastElement.classList.remove("!opacity-100");
-      }, 2500);
-    });
-  });
-</script>

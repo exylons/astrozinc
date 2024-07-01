@@ -67,11 +67,11 @@ const fullUpdatedDate = updatedDate?.toLocaleDateString("en", {
       <p class="dark:text-zinc-400 text-zinc-700 text-sm">
         <span class="block font-semibold">{author}</span>
         <a
-          class="dark:text-green-400 text-green-600 hover:underline block"
-          href="https://x.com/exylods"
+          class="dark:text-zinc-50 text-zinc-00 hover:underline block"
+          href="https://github.com/exylons"
           target="_blank"
           rel="noopener noreferrer"
-          >{twitter}
+          >@exylons
         </a>
       </p>
     </div>
@@ -86,14 +86,14 @@ const fullUpdatedDate = updatedDate?.toLocaleDateString("en", {
   </header>
   {
     updatedDate && (
-      <article class="dark:text-green-200 text-green-800 py-2 px-4 mb-6 rounded-md text-sm sm:text-base border border-green-500 bg-green-600/20">
+      <article class="dark:text-zinc-200 text-zinc-800 py-2 px-4 mb-6 rounded-md text-sm sm:text-base border border-zinc-500 bg-zinc-600/20">
         <span class="font-semibold">Last updated: </span>
         {fullUpdatedDate}
       </article>
     )
   }
   <article
-    class="prose max-w-none dark:prose-invert dark:prose-code:text-zinc-300 dark:prose-a:text-green-400 prose-a:text-green-600 hover:prose-a:underline focus:prose-a:underline prose-a:no-underline dark:prose-headings:text-zinc-100 prose-img:rounded-lg"
+    class="prose max-w-none dark:prose-invert dark:prose-code:text-zinc-300 dark:prose-a:text-zinc-300 prose-a:text-zinc-600 prose-a:underline prose-a:decoration-zinc-500 hover:prose-a:decoration-zinc-300 prose-a:underline-offset-4 dark:prose-headings:text-zinc-100 prose-img:rounded-lg"
   >
     <slot />
   </article>
