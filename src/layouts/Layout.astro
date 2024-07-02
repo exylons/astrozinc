@@ -118,6 +118,7 @@ const canonicalURL = new URL(Astro.url).href;
       <button
         id="dark-mode-toggle"
         class="fixed bottom-4 right-4 p-3 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-full focus:outline-none"
+        aria-label="Toggle theme mode"
       >
         <Icon
           name="moon"
@@ -135,9 +136,11 @@ const canonicalURL = new URL(Astro.url).href;
 <script is:inline async>
   const darkModeToggle = document.getElementById("dark-mode-toggle");
   const darkClass = "dark";
+  const htmlTag = document.querySelector("html");
 
   function applyDarkMode(isDark) {
-    document.documentElement.classList.toggle(darkClass, isDark);
+    htmlTag.classList.toggle(darkClass, isDark);
+    htmlTag.setAttribute("data-theme", isDark ? "min-dark" : "min-light");
     const sunIcon = document.querySelector(".sun-icon");
     const moonIcon = document.querySelector(".moon-icon");
     sunIcon.classList.toggle("hidden", isDark);
@@ -167,7 +170,7 @@ const canonicalURL = new URL(Astro.url).href;
   applyDarkMode(isDarkMode);
 
   darkModeToggle.addEventListener("click", () => {
-    const isDark = document.documentElement.classList.contains(darkClass);
+    const isDark = htmlTag.classList.contains(darkClass);
     applyDarkMode(!isDark);
     setCookie("darkMode", !isDark, 30);
   });
