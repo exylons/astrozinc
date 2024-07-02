@@ -4,7 +4,9 @@ import Pagination from "@components/Pagination.astro";
 import { Image } from "astro:assets";
 import authorImage from "../assets/me.jpg";
 import type { ImageMetadata } from "astro";
-import { author, twitter } from "@data/constants";
+import { author } from "@data/constants";
+import { Icon } from "astro-icon/components";
+import Toast from "@components/Toast.astro";
 
 interface Props {
   title: string;
@@ -17,13 +19,23 @@ interface Props {
   readingTime: string;
 }
 
-const { title, description, image, imageAlt, pubDate, url, updatedDate, readingTime } =
-  Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  pubDate,
+  url,
+  updatedDate,
+  readingTime,
+} = Astro.props;
 
 const ogImage = {
   src: `/image/${url}.png`,
   alt: title,
 };
+
+const githubUrl = "https://github.com/exylons/astrozinc/tree/main/src/content";
 
 const fullPubDate = pubDate.toLocaleDateString("en", {
   dateStyle: "full",
@@ -49,7 +61,7 @@ const fullUpdatedDate = updatedDate?.toLocaleDateString("en", {
     >
       {fullPubDate}
       <span>
-        <span aria-hidden="true"> • </span>
+        <span aria-hidden="true"> •</span>
         {readingTime}
       </span>
     </time>
@@ -101,6 +113,44 @@ const fullUpdatedDate = updatedDate?.toLocaleDateString("en", {
     class="prose max-w-none dark:prose-invert dark:prose-code:text-zinc-300 dark:prose-a:text-zinc-300 prose-a:text-zinc-600 prose-a:underline prose-a:decoration-zinc-500 hover:prose-a:decoration-zinc-300 prose-a:underline-offset-4 dark:prose-headings:text-zinc-100 prose-img:rounded-lg"
   >
     <slot />
+    <hr />
   </article>
+  <ul class="mt-4 flex max-sm:flex-col sm:justify-between gap-2 sm:gap-1">
+    <li title="Copy the link of this article">
+      <button
+        id="copy"
+        class="dark:hover:text-zinc-50 hover:text-zinc-950 transition-colors flex flex-row items-center"
+      >
+        <Icon name="share" size={16} class="mr-1" />
+        Share this article</button
+      >
+    </li>
+    <li>
+      <a
+        href={`${githubUrl}${Astro.url.pathname.slice(0, -1)}.mdx`}
+        class="dark:hover:text-zinc-50 hover:text-zinc-950 transition-colors flex flex-row sm:justify-start sm:flex-row-reverse items-center"
+        ><Icon name="edit" size={16} class="sm:ml-1 max-sm:mr-1" />Typo? Edit it
+        here</a
+      >
+    </li>
+  </ul>
+  <Toast
+    icon="share"
+    description="Link copied to clipboard."
+    idList="toast-share"
+  />
   <Pagination />
 </Layout>
+<script is:inline async>
+  document.getElementById("copy").addEventListener("click", function () {
+    let copyText = window.location.href;
+    let toastElement = document.getElementById("toast-share");
+
+    navigator.clipboard.writeText(copyText).then(() => {
+      toastElement.classList.remove("!invisible");
+      setTimeout(() => {
+        toastElement.classList.add("!invisible");
+      }, 2500);
+    });
+  });
+</script>

@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { title, type } = Astro.props;
+---
+
+<div class={`flex flex-col rounded-md border p-3 sm:p-4 my-8 ${type}`}>
+  <div class="flex items-center">
+    <i class="shrink-0">
+    {type ? <Icon name={type} class="w-6 h-6" /> : <Icon name="bulb" class="w-6 h-6" />}
+    </i>
+    <div class="ml-2 sm:ml-3 font-bold">{title}</div>
+  </div>
+  <div class="ml-8 sm:ml-9 text-black dark:text-white">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .info {
+    @apply border-blue-500 text-blue-500 bg-blue-50 dark:bg-blue-900/10;
+  }
+  .success {
+    @apply border-green-500 text-green-500 bg-green-50 dark:bg-green-900/10;
+  }
+  .warning {
+    @apply border-yellow-500 text-yellow-500 bg-yellow-50 dark:bg-yellow-900/10;
+  }
+  .error {
+    @apply border-red-500 text-red-500 bg-red-50 dark:bg-red-900/10;
+  }
+</style>

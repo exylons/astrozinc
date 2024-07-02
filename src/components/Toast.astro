@@ -3,23 +3,23 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
   icon: string;
-  classlist: string;
   description: string;
+  idList: string;
 }
 
-const { icon, classlist, description } = Astro.props;
+const { icon, description, idList } = Astro.props;
 ---
 
 <div class="flex justify-center">
   <div
-    id="toast"
-    class="opacity-0 fixed bottom-6 transition-all flex items-center w-full max-w-xs p-4 text-zinc-500 bg-white rounded-lg shadow-md dark:text-zinc-400 dark:bg-zinc-900"
+    id={idList}
+    class="!invisible fixed bottom-6 flex items-center w-full max-w-xs p-4 text-zinc-500 bg-white rounded-lg shadow-md dark:text-zinc-400 dark:bg-zinc-900"
     role="alert"
   >
     <div
-      class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-zinc-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-zinc-200"
+      class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-zinc-500 bg-zinc-200 rounded-lg dark:bg-zinc-600 dark:text-zinc-200"
     >
-      <Icon name={icon} class={classlist} />
+      <Icon name={icon} />
     </div>
     <div class="ms-3 text-sm font-normal">{description}</div>
   </div>
