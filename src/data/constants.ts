@@ -11,7 +11,6 @@ export const defaultMeta = {
   },
 };
 
-
 export const navigation = [
   {
     href: "/",

@@ -2,11 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import { getCollection } from "astro:content";
-import { socials } from "@data/constants";
+import Benefit from "@components/Benefit.astro";
 import Blog from "@components/Blog.astro";
-import Social from "@components/Social.astro";
-import Toast from "@components/Toast.astro";
-import { Icon } from "astro-icon/components";
+// import { Icon } from "astro-icon/components";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -24,6 +22,33 @@ const posts = (await getCollection("blog")).sort(
       </p>
     </div>
   </section>
+  <section class="text-center mt-20">
+    <div class="sm:mr-5">
+      <Header title="Why use this template instead?" />
+      <ul class="grid grid-cols-1 gap-4 place-items-center">
+        <Benefit
+          iconName="clipboard"
+          title="Fully featured MDX"
+          description="Comes with many different MDX remark plugins to make your blog posts look great and more functional."
+        />
+        <Benefit
+          iconName="clipboard"
+          title="100 Lighthouse Score"
+          description="With Astro, you get a 100 Lighthouse score out of the box. No need to worry about performance!"
+        />
+        <Benefit
+          iconName="clipboard"
+          title="Flexible to use"
+          description="Just create an MDX file, add the metadata, and you're good to go writing your blog post!"
+        />
+        <Benefit
+          iconName="clipboard"
+          title="Free and Open Source"
+          description="This template is free and open source. Feel free to contribute to the project on GitHub!"
+        />
+      </ul>
+    </div>
+  </section>
   <section>
     <h2 class="mt-12 text-2xl font-semibold dark:text-zinc-100 text-zinc-900">
       Recent Posts
@@ -35,11 +60,5 @@ const posts = (await getCollection("blog")).sort(
       class="inline-block mt-7 dark:hover:text-zinc-50 hover:text-zinc-400 transition-colors"
       href="/blog/">View all posts &rarr;</a
     >
-  </section>
-  <section class="text-center mt-12">
-    <div class="sm:mr-5">
-      <Header title="Why should you use this template?" />
-      [placeholder for now]
-    </div>
   </section>
 </Layout>

@@ -27,7 +27,7 @@ const canonicalURL = new URL(Astro.url).href;
 ---
 
 <!doctype html>
-<html lang="en-US" class="dark:[color-scheme:dark]">
+<html lang="en-US" class="dark:[color-scheme:dark] scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -101,7 +101,7 @@ const canonicalURL = new URL(Astro.url).href;
     <footer class="mt-12 pb-12">
       <div class="mx-auto max-w-4xl px-6 lg:px-2 text-center text-xs lg:text-sm dark:text-zinc-400 text-zinc-600">
         <p>
-          &copy; {new Date().getFullYear()} {author}. All rights reserved.
+          &copy; {new Date().getFullYear()} {author}. All rights reserved. <span><a href="https://github.com/exylons/astrozinc" class="hover:underline">Source Code.</a></span>
         </p>
       </div>
     </footer>

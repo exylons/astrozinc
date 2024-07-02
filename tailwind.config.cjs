@@ -11,6 +11,17 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            ".anchor-link": {
+              marginRight: "0.25rem",
+              opacity: "0.3",
+              textDecoration: "none !important",
+              transitionProperty: "opacity !important",
+              transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1);",
+              transitionDuration: "150ms",
+              "&:hover": {
+                opacity: "1",
+              },
+            },
             "code::before": {
               content: '""',
             },

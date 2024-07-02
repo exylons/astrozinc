@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-icon/components";
+interface Props {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+const { iconName, title, description } = Astro.props;
+---
+
+<li class="flex flex-col sm:flex-row dark:bg-zinc-900 p-6 rounded-xl shadow-md">
+  <div class="grid place-items-center"><Icon name={iconName} class="w-16 h-16" /></div>
+  <div class="sm:ml-6">
+    <h2 class="font-bold text-xl max-sm:mt-4">
+      {title}
+    </h2>
+    <p>{description}</p>
+  </div>
+</li>
