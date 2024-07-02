@@ -1,5 +1,6 @@
 ---
 import Link from "@components/Link.astro";
+import { Icon } from "astro-icon/components";
 import { twitter, author, defaultMeta, navigation } from "@data/constants";
 import "@fontsource-variable/inter";
 
@@ -99,11 +100,89 @@ const canonicalURL = new URL(Astro.url).href;
       <slot />
     </main>
     <footer class="mt-12 pb-12">
-      <div class="mx-auto max-w-4xl px-6 lg:px-2 text-center text-xs lg:text-sm dark:text-zinc-400 text-zinc-600">
+      <div
+        class="mx-auto max-w-4xl px-6 lg:px-2 text-center text-xs lg:text-sm dark:text-zinc-400 text-zinc-600"
+      >
         <p>
-          &copy; {new Date().getFullYear()} {author}. All rights reserved. <span><a href="https://github.com/exylons/astrozinc" class="hover:underline">Source Code.</a></span>
+          &copy; {new Date().getFullYear()}
+          {author}. All rights reserved. <span
+            ><a
+              href="https://github.com/exylons/astrozinc"
+              class="hover:underline">Source Code.</a
+            ></span
+          >
         </p>
       </div>
     </footer>
+    <div>
+      <button
+        id="dark-mode-toggle"
+        class="fixed bottom-4 right-4 p-3 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-full focus:outline-none"
+      >
+        <Icon
+          name="moon"
+          class="w-6 h-6 dark:text-zinc-100 text-zinc-900 sun-icon"
+        />
+        <Icon
+          name="sun"
+          class="w-6 h-6 dark:text-zinc-100 text-zinc-900 moon-icon"
+        />
+      </button>
+    </div>
   </body>
 </html>
+
+<script is:inline async>
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  const darkClass = "dark";
+
+  function applyDarkMode(isDark) {
+    document.documentElement.classList.toggle(darkClass, isDark);
+    const sunIcon = document.querySelector(".sun-icon");
+    const moonIcon = document.querySelector(".moon-icon");
+    sunIcon.classList.toggle("hidden", isDark);
+    moonIcon.classList.toggle("hidden", !isDark);
+  }
+
+  function getCookie(name) {
+    const value = `; `;
+    const parts = document.cookie.split(value);
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i].split("=");
+      if (part[0].trim() === name) {
+        return part[1];
+      }
+    }
+    return null;
+  }
+
+  function setCookie(name, value, expirationDays) {
+    const date = new Date();
+    date.setTime(date.getTime() + expirationDays * 24 * 60 * 60 * 1000);
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${value}; ${expires}; path=/`;
+  }
+
+  const isDarkMode = getCookie("darkMode") === "true";
+  applyDarkMode(isDarkMode);
+
+  darkModeToggle.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.contains(darkClass);
+    applyDarkMode(!isDark);
+    setCookie("darkMode", !isDark, 30);
+  });
+</script>
+
+<style>
+  body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-zinc-400;
+  }
+
+  .dark body::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800;
+  }
+</style>

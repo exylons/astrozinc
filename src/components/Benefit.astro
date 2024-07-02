@@ -10,11 +10,11 @@ const { iconName, title, description } = Astro.props;
 ---
 
 <li class="flex flex-col sm:flex-row dark:bg-zinc-900 p-6 rounded-xl shadow-md">
-  <div class="grid place-items-center"><Icon name={iconName} class="w-16 h-16" /></div>
-  <div class="sm:ml-6">
-    <h2 class="font-bold text-xl max-sm:mt-4">
+  <figure class="grid place-items-center"><Icon name={iconName} class="w-16 h-16" /></figure>
+  <div class="sm:ml-6 gap-1 grid">
+    <h2 class="font-bold text-xl max-sm:mt-4 dark:text-zinc-50 text-zinc-900">
       {title}
     </h2>
-    <p>{description}</p>
+    <p class="text-base">{description}</p>
   </div>
 </li>
