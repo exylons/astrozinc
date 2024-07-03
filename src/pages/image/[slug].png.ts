@@ -53,10 +53,10 @@ export async function GET(context: APIContext) {
       </defs>
     </svg>
 
-    <div tw="flex flex-col w-full h-4/5 p-10 justify-center mt-9">
+    <div tw="flex flex-col items-center w-full h-4/5 p-10 justify-center mt-9">
       <div tw="text-zinc-400 text-2xl mb-6">${date}</div>
       <div
-        tw="flex text-6xl w-full font-bold leading-snug tracking-tight text-white"
+        tw="flex items-center justify-center text-6xl w-full font-bold leading-snug tracking-tight text-white"
       >
         ${title}
       </div>
@@ -67,7 +67,7 @@ export async function GET(context: APIContext) {
         />
         <div tw="flex flex-col ml-4 text-2xl">
           <span tw="text-zinc-400">Lance Ross</span>
-          <span tw="text-green-400">@exylods</span>
+          <span tw="text-zinc-400">@exylods</span>
         </div>
       </div>
     </div>

@@ -1,7 +1,0 @@
-owner: exylons
-repo: web
-url: https://github.com/exylons/web
-description: My personal website, inspired by Kevin Z.
-languages:
-  - Astro
-  - Tailwind CSS

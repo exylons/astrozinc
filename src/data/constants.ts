@@ -1,4 +1,3 @@
-export const twitter = "@exylods";
 export const author = "Lance Ross";
 
 export const defaultMeta = {

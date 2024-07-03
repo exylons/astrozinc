@@ -73,7 +73,7 @@ const canonicalURL = new URL(Astro.url).href;
       >Skip to main content</a
     >
     <nav
-      class="mb-16 mx-auto flex overflow-x-auto px-6 lg:px-2 sm:overflow-x-visible"
+      class="mb-16 mx-auto flex overflow-x-auto px-6 lg:px-2 sm:overflow-x-visible justify-between"
       class:list={{
         "max-w-4xl": wide,
         "max-w-3xl": !wide,
@@ -88,6 +88,20 @@ const canonicalURL = new URL(Astro.url).href;
           ))
         }
       </ul>
+      <button
+        id="dark-mode-toggle"
+        class="focus:outline-none dark:text-zinc-100 text-zinc-900 dark:hover:text-zinc-300 hover:text-zinc-600"
+        aria-label="Toggle theme mode"
+      >
+        <Icon
+          name="moon"
+          class="w-6 h-6 sun-icon"
+        />
+        <Icon
+          name="sun"
+          class="w-6 h-6 moon-icon"
+        />
+      </button>
     </nav>
     <main
       class="px-6 lg:px-2 mx-auto dark:text-zinc-400 text-zinc-600"
@@ -114,22 +128,6 @@ const canonicalURL = new URL(Astro.url).href;
         </p>
       </div>
     </footer>
-    <div>
-      <button
-        id="dark-mode-toggle"
-        class="fixed bottom-4 right-4 p-3 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-full focus:outline-none"
-        aria-label="Toggle theme mode"
-      >
-        <Icon
-          name="moon"
-          class="w-6 h-6 dark:text-zinc-100 text-zinc-900 sun-icon"
-        />
-        <Icon
-          name="sun"
-          class="w-6 h-6 dark:text-zinc-100 text-zinc-900 moon-icon"
-        />
-      </button>
-    </div>
   </body>
 </html>
 

@@ -7,7 +7,7 @@ A minimalist blogging astro template inspired with all the zinc colors from Tail
 ## Tech stack
 
 - **Platform**: [Astro](https://github.com/withastro/astro)
-- **Frontend Library**: [Solid.js](https://github.com/solidjs/solid)
+- **Frontend Library**: [React](https://github.com/facebook/react)
 - **Package manager**: [pnpm](https://pnpm.io/)
 - **OG-images**: [Satori](https://github.com/vercel/satori)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
