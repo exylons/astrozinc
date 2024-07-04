@@ -6,7 +6,7 @@ import Blog from "@components/Blog.astro";
 import SearchBar from "@components/SearchBar.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const title = "Blog - AstroZinc";
@@ -15,10 +15,12 @@ const description =
 ---
 
 <Layout title={title} description={description}>
-  <Header title="Blog" />
-  <p class="max-w-prose mb-10 font-normal leading-relaxed text-center">
-    {description}
-  </p>
+  <section class="text-center grid place-items-center">
+    <Header title="Blog" />
+    <p class="max-w-prose mb-10 font-normal leading-relaxed">
+      {description}
+    </p>
+  </section>
   <SearchBar />
   <h2 class="mt-12 text-2xl font-semibold dark:text-zinc-100 text-zinc-900">
     Posts
@@ -26,4 +28,17 @@ const description =
   <ul class="mt-6 grid grid-cols-1 gap-6">
     {posts.map((p) => <Blog {...p} />)}
   </ul>
+  <section class="text-center grid place-items-center mt-20">
+    <Header title="Want to stay updated?" />
+    <p class="mt-3 mb-8 max-w-prose leading-relaxed">
+      We have an RSS feed that you can subscribe to. This way, you can stay up
+      to date to our latest posts. Click the RSS link down below to and add it
+      to your RSS Reader app.
+    </p>
+    <a
+      href="/rss.xml"
+      class="text-zinc-900 bg-zinc-200/80 hover:bg-zinc-300 font-medium rounded-lg text-base px-5 py-2.5 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+      >RSS Feed</a
+    >
+  </section>
 </Layout>

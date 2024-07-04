@@ -19,4 +19,8 @@ export const navigation = [
     href: "/blog/",
     text: "Blog",
   },
+  {
+    href: "/rss.xml",
+    text: "RSS",
+  },
 ];
