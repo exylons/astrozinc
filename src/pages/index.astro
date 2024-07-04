@@ -4,7 +4,6 @@ import Header from "@components/Header.astro";
 import { getCollection } from "astro:content";
 import Benefit from "@components/Benefit.astro";
 import Blog from "@components/Blog.astro";
-// import { Icon } from "astro-icon/components";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()

@@ -3,6 +3,7 @@ import Link from "@components/Link.astro";
 import { Icon } from "astro-icon/components";
 import { author, defaultMeta, navigation } from "@data/constants";
 import "@fontsource-variable/inter";
+import Callout from "@components/MDX/Callout.astro";
 
 const twitter = "exylods"; // Twitter username, even though it's privated.
 
@@ -95,14 +96,8 @@ const canonicalURL = new URL(Astro.url).href;
         class="focus:outline-none dark:text-zinc-100 text-zinc-900 dark:hover:text-zinc-300 hover:text-zinc-600"
         aria-label="Toggle theme mode"
       >
-        <Icon
-          name="moon"
-          class="w-6 h-6 sun-icon"
-        />
-        <Icon
-          name="sun"
-          class="w-6 h-6 moon-icon"
-        />
+        <Icon name="moon" class="w-6 h-6 sun-icon" />
+        <Icon name="sun" class="w-6 h-6 moon-icon" />
       </button>
     </nav>
     <main
@@ -113,6 +108,12 @@ const canonicalURL = new URL(Astro.url).href;
         "max-w-3xl": !wide,
       }}
     >
+      <noscript>
+        <Callout type="error" title="NOTICE">
+          Some features on this website won't work without JavaScript such as
+          theme toggle, search bar, and copy article.
+        </Callout>
+      </noscript>
       <slot />
     </main>
     <footer class="mt-12 pb-12">
