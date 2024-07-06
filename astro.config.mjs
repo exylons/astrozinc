@@ -39,6 +39,10 @@ export default defineConfig({
     ],
   },
   integrations: [
+    (await import("astro-compress")).default({
+      CSS: false,
+      SVG: false,
+    }),
     tailwind(),
     sitemap(),
     expressiveCode(astroExpressiveCodeOptions),
