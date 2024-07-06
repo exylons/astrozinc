@@ -50,7 +50,6 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require('tailwind-scrollbar'),
     require("@tailwindcss/aspect-ratio"),
   ],
 };
